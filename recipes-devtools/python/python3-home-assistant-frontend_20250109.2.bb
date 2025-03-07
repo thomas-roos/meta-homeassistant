@@ -13,6 +13,10 @@ PYPI_PACKAGE = "home_assistant_frontend"
 
 SRC_URI[sha256sum] = "7b6ad116f6625449612a7301a76cc282ee61a74633d3e8b717b5e012216f5bf3"
 
+SRC_URI:append = "\
+    file://0002-setuptools.patch \
+    "
+
 RDEPENDS:${PN} += "\
     python3-core (>=3.11) \
 "

@@ -12,7 +12,7 @@ SRCREV = "bf87683893ab1ad8f518e5db677832c6d91523d0"
 
 inherit python_poetry_core ptest
 
-S = "${UNPACKDIR}/git"
+S = "${WORKDIR}/git"
 
 RDEPENDS:${PN} = "\
     python3-core (>=3.10) \

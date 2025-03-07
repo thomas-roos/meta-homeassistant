@@ -1,0 +1,11 @@
+--- audioop_lts-0.2.1.orig/setup.py
++++ audioop_lts-0.2.1/setup.py
+@@ -8,7 +8,7 @@ macros = []
+ options = {}
+ if not Py_GIL_DISABLED:
+     macros.append(("Py_LIMITED_API", "0x030D0000"))
+-    options["bdist_wheel"] = {"py_limited_api": "cp313"}
++    options["bdist_wheel"] = {"py_limited_api": "cp312"}
+
+ extensions = [
+     Extension(

@@ -18,5 +18,5 @@ index 4a9b64a..43b8f63 100644
 -requires = ["setuptools~=68.0", "wheel~=0.40.0"]
 +requires = ["setuptools>=68.0", "wheel>=0.40.0"]
  build-backend = "setuptools.build_meta"
- 
+
  [project]

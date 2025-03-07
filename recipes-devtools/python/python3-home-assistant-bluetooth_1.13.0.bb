@@ -13,7 +13,7 @@ SRC_URI:append = " \
 "
 SRC_URI[sha256sum] = "9cac369fea11f67c1165df527f918a8c56630cbccb3c5cbe24b72f06aeb9f59b"
 
-S = "${UNPACKDIR}/git"
+S = "${WORKDIR}/git"
 
 RDEPENDS:${PN} = "\
     python3-core (>=3.11) \

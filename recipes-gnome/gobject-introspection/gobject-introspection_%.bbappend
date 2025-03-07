@@ -1,0 +1,1 @@
+# DEPENDS += "python3-setuptools-native python3-distutils-native"

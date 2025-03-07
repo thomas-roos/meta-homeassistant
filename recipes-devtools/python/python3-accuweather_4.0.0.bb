@@ -14,7 +14,7 @@ SRC_URI:append = " \
 
 SRCREV = "6059528a21f5571a53bcc3652bb2c4ba414efedd"
 
-S = "${UNPACKDIR}/git"
+S = "${WORKDIR}/git"
 
 RDEPENDS:${PN} += "\
     python3-aiohttp (>=3.9.4) \

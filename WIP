@@ -1,0 +1,11 @@
+# # ### specific to home assistant
+# IMAGE_INSTALL += "\
+#     python3-homeassistant \
+#     python3-homeassistant-matter \
+#     python3-homeassistant-mobile-app \
+#     python3-homeassistant-mqtt \
+#     python3-homeassistant-pulseaudio-loopback \
+#     "
+# # IMAGE_LINGUAS = ""
+# # 100 MiB of additional storage for config and runtime data
+# IMAGE_ROOTFS_EXTRA_SPACE = "102400"

@@ -46,7 +46,7 @@ do_install:append () {
 
     # Install systemd unit files and set correct config directory
     install -d ${D}${systemd_unitdir}/system
-    install -m 0644 ${UNPACKDIR}/homeassistant.service ${D}${systemd_unitdir}/system
+    install -m 0644 ${WORKDIR}/homeassistant.service ${D}${systemd_unitdir}/system
     sed -i -e 's,@HOMEASSISTANT_CONFIG_DIR@,${HOMEASSISTANT_CONFIG_DIR},g' ${D}${systemd_unitdir}/system/homeassistant.service
     sed -i -e 's,@HOMEASSISTANT_USER@,${HOMEASSISTANT_USER},g' ${D}${systemd_unitdir}/system/homeassistant.service
 }
@@ -70,8 +70,8 @@ RDEPENDS:${PN} += "\
     python3-attrs (>=24.2.0) \
     ${@bb.utils.contains("DISTRO_FEATURES", "ptest", "python3-atomicwrites", "python3-atomicwrites-homeassistant (=1.4.1)",d)} \
     python3-audioop-lts (=0.2.1) \
-    python3-awesomeversion (>=24.6.0) \
-    python3-bcrypt (>=4.2.0) \
+    python3-awesomeversion \
+    python3-bcrypt \
     python3-certifi (>=2021.5.30) \
     python3-ciso8601 (=2.3.2) \
     python3-cronsim (>=2.6) \
@@ -83,7 +83,7 @@ RDEPENDS:${PN} += "\
     python3-jinja2 (>=3.1.5) \
     python3-lru-dict (>=1.3.0) \
     python3-pyjwt (=2.10.1) \
-    python3-cryptography (>=44.0.0) \
+    python3-cryptography \
     python3-pillow (>=11.0.0) \
     python3-propcache (>=0.2.1) \
     python3-pyopenssl (>=24.3.0) \

@@ -1,0 +1,137 @@
+Index: git/av/audio/codeccontext.pyx
+===================================================================
+--- git.orig/av/audio/codeccontext.pyx
++++ git/av/audio/codeccontext.pyx
+@@ -88,12 +88,12 @@ cdef class AudioCodecContext(CodecContex
+ 
+         :type: AudioLayout
+         """
+-        return get_audio_layout(self.ptr.ch_layout)
++        return get_audio_layout(self.ptr.channel_layout)
+ 
+     @layout.setter
+     def layout(self, value):
+         cdef AudioLayout layout = AudioLayout(value)
+-        self.ptr.ch_layout = layout.layout
++        self.ptr.channel_layout = layout.layout
+ 
+     @property
+     def format(self):
+Index: git/av/audio/fifo.pyx
+===================================================================
+--- git.orig/av/audio/fifo.pyx
++++ git/av/audio/fifo.pyx
+@@ -71,7 +71,7 @@ cdef class AudioFifo:
+         # Make sure nothing changed.
+         elif (
+             frame.ptr.format != self.template.ptr.format or
+-            # TODO: frame.ptr.ch_layout != self.template.ptr.ch_layout or
++            # TODO: frame.ptr.channel_layout != self.template.ptr.channel_layout or
+             frame.ptr.sample_rate != self.template.ptr.sample_rate or
+             (frame._time_base.num and self.template._time_base.num and (
+                 frame._time_base.num != self.template._time_base.num or
+@@ -131,7 +131,7 @@ cdef class AudioFifo:
+         frame._copy_internal_attributes(self.template)
+         frame._init(
+             <lib.AVSampleFormat>self.template.ptr.format,
+-            <lib.AVChannelLayout>self.template.ptr.ch_layout,
++            <lib.AVChannelLayout>self.template.ptr.channel_layout,
+             samples,
+             1,  # Align?
+         )
+Index: git/av/audio/frame.pyx
+===================================================================
+--- git.orig/av/audio/frame.pyx
++++ git/av/audio/frame.pyx
+@@ -46,7 +46,7 @@ cdef class AudioFrame(Frame):
+     cdef _init(self, lib.AVSampleFormat format, lib.AVChannelLayout layout, unsigned int nb_samples, unsigned int align):
+         self.ptr.nb_samples = nb_samples
+         self.ptr.format = <int>format
+-        self.ptr.ch_layout = layout
++        self.ptr.channel_layout = layout
+         # [FFMPEG6] self.ptr.channels = layout.nb_channels  # ffmpeg 6 only
+ 
+         # Sometimes this is called twice. Oh well.
+@@ -82,7 +82,7 @@ cdef class AudioFrame(Frame):
+         lib.av_freep(&self._buffer)
+ 
+     cdef _init_user_attributes(self):
+-        self.layout = get_audio_layout(self.ptr.ch_layout)
++        self.layout = get_audio_layout(self.ptr.channel_layout)
+         self.format = get_audio_format(<lib.AVSampleFormat>self.ptr.format)
+ 
+     def __repr__(self):
+Index: git/av/container/output.pyx
+===================================================================
+--- git.orig/av/container/output.pyx
++++ git/av/container/output.pyx
+@@ -117,7 +117,7 @@ cdef class OutputContainer(Container):
+                 pass
+             codec_context.sample_rate = rate or 48000
+             stream.time_base = codec_context.time_base
+-            lib.av_channel_layout_default(&codec_context.ch_layout, 2)
++            lib.av_channel_layout_default(&codec_context.channel_layout, 2)
+ 
+         # Some formats want stream headers to be separate
+         if self.ptr.oformat.flags & lib.AVFMT_GLOBALHEADER:
+Index: git/av/frame.pyx
+===================================================================
+--- git.orig/av/frame.pyx
++++ git/av/frame.pyx
+@@ -34,7 +34,7 @@ cdef class Frame:
+             self.ptr.format = source.ptr.format
+             self.ptr.width = source.ptr.width
+             self.ptr.height = source.ptr.height
+-            self.ptr.ch_layout = source.ptr.ch_layout
++            self.ptr.channel_layout = source.ptr.channel_layout
+ 
+     cdef _init_user_attributes(self):
+         pass  # Dummy to match the API of the others.
+Index: git/include/libavcodec/avcodec.pxd
+===================================================================
+--- git.orig/include/libavcodec/avcodec.pxd
++++ git/include/libavcodec/avcodec.pxd
+@@ -36,7 +36,7 @@ cdef extern from "libavutil/channel_layo
+         #     AVChannelCustom *map
+         void *opaque
+ 
+-    int av_channel_layout_default(AVChannelLayout *ch_layout, int nb_channels)
++    int av_channel_layout_default(AVChannelLayout *channel_layout, int nb_channels)
+     int av_channel_layout_from_mask(AVChannelLayout *channel_layout, uint64_t mask)
+     int av_channel_layout_from_string(AVChannelLayout *channel_layout, const char *str)
+     void av_channel_layout_uninit(AVChannelLayout *channel_layout)
+@@ -248,7 +248,7 @@ cdef extern from "libavcodec/avcodec.h"
+         # Audio.
+         AVSampleFormat sample_fmt
+         int sample_rate
+-        AVChannelLayout ch_layout
++        AVChannelLayout channel_layout
+         int frame_size
+ 
+         #: .. todo:: ``get_buffer`` is deprecated for get_buffer2 in newer versions of FFmpeg.
+@@ -386,7 +386,7 @@ cdef extern from "libavcodec/avcodec.h"
+         int sample_rate  # Audio Sample rate
+         # [FFMPEG6] int channels
+ 
+-        AVChannelLayout ch_layout
++        AVChannelLayout channel_layout
+ 
+         int64_t pts
+         int64_t pkt_dts
+Index: git/include/libswresample/swresample.pxd
+===================================================================
+--- git.orig/include/libswresample/swresample.pxd
++++ git/include/libswresample/swresample.pxd
+@@ -12,10 +12,10 @@ cdef extern from "libswresample/swresamp
+ 
+     cdef SwrContext* swr_alloc_set_opts(
+         SwrContext *ctx,
+-        int64_t out_ch_layout,
++        int64_t out_channel_layout,
+         AVSampleFormat out_sample_fmt,
+         int out_sample_rate,
+-        int64_t in_ch_layout,
++        int64_t in_channel_layout,
+         AVSampleFormat in_sample_fmt,
+         int in_sample_rate,
+         int log_offset,

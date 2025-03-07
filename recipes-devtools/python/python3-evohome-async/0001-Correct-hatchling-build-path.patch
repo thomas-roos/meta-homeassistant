@@ -9,11 +9,11 @@ Upstream-Status: Submitted [https://github.com/zxdavb/evohome-async/pull/22]
  pyproject.toml | 2 +-
  1 file changed, 1 insertion(+), 1 deletion(-)
 
-diff --git a/pyproject.toml b/pyproject.toml
-index 99e352c..7a73254 100644
---- a/pyproject.toml
-+++ b/pyproject.toml
-@@ -52,7 +52,7 @@
+Index: evohome_async-0.4.21/pyproject.toml
+===================================================================
+--- evohome_async-0.4.21.orig/pyproject.toml
++++ evohome_async-0.4.21/pyproject.toml
+@@ -52,10 +52,10 @@
    sources = ["src"]
  
  [tool.hatch.build.targets.wheel]
@@ -21,4 +21,8 @@ index 99e352c..7a73254 100644
 +  packages = ["evohomeasync", "evohomeasync2"]
  
  [tool.hatch.version]
-   path = "src/evohomeasync2/__init__.py"
+-  path = "src/evohomeasync2/__init__.py"
++  path = "evohomeasync2/__init__.py"
+ 
+ 
+ #

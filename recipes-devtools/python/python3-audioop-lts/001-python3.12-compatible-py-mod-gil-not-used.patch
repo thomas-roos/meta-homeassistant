@@ -1,0 +1,13 @@
+Index: audioop_lts-0.2.1/audioop/_audioop.c
+===================================================================
+--- audioop_lts-0.2.1.orig/audioop/_audioop.c
++++ audioop_lts-0.2.1/audioop/_audioop.c
+@@ -1981,7 +1981,9 @@ audioop_exec(PyObject* module)
+ static PyModuleDef_Slot audioop_slots[] = {
+     {Py_mod_exec, audioop_exec},
+     {Py_mod_multiple_interpreters, Py_MOD_PER_INTERPRETER_GIL_SUPPORTED},
++#if 0
+     {Py_mod_gil, Py_MOD_GIL_NOT_USED},
++#endif
+     {0, NULL}
+ };

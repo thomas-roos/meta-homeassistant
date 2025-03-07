@@ -14,4 +14,8 @@ SRCREV = "257f3846391af1b082bd989fc19395f4c7e7f2a1"
 
 inherit setuptools3 pkgconfig cython
 
-S = "${UNPACKDIR}/git"
+S = "${WORKDIR}/git"
+
+SRC_URI += "\
+    file://0001-ch-layout.patch \
+"

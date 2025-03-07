@@ -264,8 +264,8 @@ python __anonymous() {
 python do_addptest () {
     import shutil
 
-    source_file = os.path.join(d.getVar('UNPACKDIR'), 'run-ptest-sample')
-    target_file = os.path.join(d.getVar('UNPACKDIR'), 'run-ptest')
+    source_file = os.path.join(d.getVar('WORKDIR'), 'run-ptest-sample')
+    target_file = os.path.join(d.getVar('WORKDIR'), 'run-ptest')
     shutil.copy(source_file, target_file)
 
     # Get the list of packages

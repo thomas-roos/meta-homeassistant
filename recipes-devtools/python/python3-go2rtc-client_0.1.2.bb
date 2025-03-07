@@ -10,7 +10,7 @@ inherit pypi python_hatchling
 
 RDEPENDS:${PN} += "\
     python3-aiohttp (>= 3.10) \
-    python3-awesomeversion (>=24.6) \
+    python3-awesomeversion \
     python3-mashumaro (>=3.13) \
     python3-orjson (>=3.10) \
     python3-webrtc-models (>=0.1) \

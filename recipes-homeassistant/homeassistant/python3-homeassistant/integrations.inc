@@ -49,16 +49,13 @@ PACKAGES += "\
     ${PN}-dunehd \
     ${PN}-evohome \
     ${PN}-ffmpeg \
-    ${PN}-folder-watcher \
     ${PN}-fritz \
     ${PN}-fritzbox \
     ${PN}-fritzbox-callmonitor \
     ${PN}-frontend \
     ${PN}-go2rtc \
-    ${PN}-generic \
     ${PN}-github \
     ${PN}-google-mail \
-    ${PN}-google-sheets \
     ${PN}-google-tasks \
     ${PN}-google-translate \
     ${PN}-hardware \
@@ -116,8 +113,6 @@ PACKAGES += "\
     ${PN}-usb \
     ${PN}-utility-meter \
     ${PN}-vlc \
-    ${PN}-w800rf32 \
-    ${PN}-wirelesstag \
     ${PN}-zabbix \
     ${PN}-zeroconf \
     ${PN}-zestimate \
@@ -391,10 +386,10 @@ RDEPENDS:${PN}-ffmpeg = "\
     python3-ha-ffmpeg (=3.2.2) \
 "
 
-ALLOW_EMPTY:${PN}-folder-watcher = "1"
-RDEPENDS:${PN}-folder-watcher = "\
-    python3-watchdog (=6.0.0) \
-"
+# ALLOW_EMPTY:${PN}-folder-watcher = "1"
+# RDEPENDS:${PN}-folder-watcher = "\
+#     python3-watchdog (=6.0.0) \
+# "
 
 ALLOW_EMPTY:${PN}-fritz = "1"
 RDEPENDS:${PN}-fritz = "\
@@ -417,11 +412,11 @@ RDEPENDS:${PN}-frontend = "\
     python3-home-assistant-frontend (>=20250109.2) \
 "
 
-ALLOW_EMPTY:${PN}-generic = "1"
-RDEPENDS:${PN}-generic = "\
-    python3-av (=13.1.0) \
-    python3-pillow (>=11.0.0) \
-"
+# ALLOW_EMPTY:${PN}-generic = "1"
+# RDEPENDS:${PN}-generic = "\
+#     python3-av (=13.1.0) \
+#     python3-pillow (>=11.0.0) \
+# "
 
 ALLOW_EMPTY:${PN}-github = "1"
 RDEPENDS:${PN}-github = "\
@@ -438,10 +433,10 @@ RDEPENDS:${PN}-google-mail = "\
     python3-google-api-python-client (>=2.71.0) \
 "
 
-ALLOW_EMPTY:${PN}-google-sheets = "1"
-RDEPENDS:${PN}-google-sheets = "\
-    python3-gspread (>=5.5.0) \
-"
+# ALLOW_EMPTY:${PN}-google-sheets = "1"
+# RDEPENDS:${PN}-google-sheets = "\
+#     python3-gspread (>=5.5.0) \
+# "
 
 ALLOW_EMPTY:${PN}-google-tasks = "1"
 RDEPENDS:${PN}-google-tasks = "\
@@ -667,12 +662,12 @@ RDEPENDS:${PN}-startca = "\
     python3-xmltodict (>=0.13.0) \
 "
 
-ALLOW_EMPTY:${PN}-stream = "1"
-RDEPENDS:${PN}-stream = "\
-    python3-pyturbojpeg (=1.7.5) \
-    python3-av (=13.1.0) \
-    python3-numpy (>=2.2.0) \
-"
+# ALLOW_EMPTY:${PN}-stream = "1"
+# RDEPENDS:${PN}-stream = "\
+#     python3-pyturbojpeg (=1.7.5) \
+#     python3-av (=13.1.0) \
+#     python3-numpy (>=2.2.0) \
+# "
 
 ALLOW_EMPTY:${PN}-switchbot = "1"
 RDEPENDS:${PN}-switchbot = "\
@@ -742,15 +737,15 @@ RDEPENDS:${PN}-vlc = "\
     python3-python-vlc (>=3.0.18122) \
 "
 
-ALLOW_EMPTY:${PN}-w800rf32 = "1"
-RDEPENDS:${PN}-w800rf32 = "\
-    python3-pyw800rf32 (= 0.4) \
-"
+# ALLOW_EMPTY:${PN}-w800rf32 = "1"
+# RDEPENDS:${PN}-w800rf32 = "\
+#     python3-pyw800rf32 (= 0.4) \
+# "
 
-ALLOW_EMPTY:${PN}-wirelesstag = "1"
-RDEPENDS:${PN}-wirelesstag = "\
-    python3-wirelesstagpy (=0.8.1) \
-"
+# ALLOW_EMPTY:${PN}-wirelesstag = "1"
+# RDEPENDS:${PN}-wirelesstag = "\
+#     python3-wirelesstagpy (=0.8.1) \
+# "
 
 ALLOW_EMPTY:${PN}-zabbix = "1"
 RDEPENDS:${PN}-zabbix = "\
@@ -759,7 +754,7 @@ RDEPENDS:${PN}-zabbix = "\
 
 ALLOW_EMPTY:${PN}-zeroconf = "1"
 RDEPENDS:${PN}-zeroconf = "\
-    python3-zeroconf (>=0.136.2) \
+    python3-zeroconf \
 "
 
 ALLOW_EMPTY:${PN}-zestimate = "1"
@@ -831,11 +826,11 @@ RRECOMMENDS:${PN} += "\
     ${PN}-airtouch4 \
     ${PN}-airtouch5 \
     ${PN}-airvisual \
-    ${PN}-airvisual-pro \    
-    ${PN}-airzone \    
-    ${PN}-airzone-cloud \    
-    ${PN}-alarmdecoder \    
-    ${PN}-alpha-vantage \    
+    ${PN}-airvisual-pro \
+    ${PN}-airzone \
+    ${PN}-airzone-cloud \
+    ${PN}-alarmdecoder \
+    ${PN}-alpha-vantage \
     ${PN}-amazon-polly \
     ${PN}-amberelectric \
     ${PN}-ampio \
@@ -856,14 +851,11 @@ RRECOMMENDS:${PN} += "\
     ${PN}-dlna-dms \
     ${PN}-dunehd \
     ${PN}-evohome \
-    ${PN}-folder-watcher \
     ${PN}-fritz \
     ${PN}-fritzbox \
     ${PN}-fritzbox-callmonitor \
-    ${PN}-generic \
     ${PN}-github \
     ${PN}-google-mail \
-    ${PN}-google-sheets \
     ${PN}-google-tasks \
     ${PN}-hue \
     ${PN}-ipp \
@@ -912,8 +904,6 @@ RRECOMMENDS:${PN} += "\
     ${PN}-upnp \
     ${PN}-utility-meter \
     ${PN}-vlc \
-    ${PN}-w800rf32 \
-    ${PN}-wirelesstag \
     ${PN}-zabbix \
     ${PN}-zestimate \
     ${PN}-zha \

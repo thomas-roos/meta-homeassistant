@@ -1,0 +1,11 @@
+Index: standard_telnetlib-3.13.0/pyproject.toml
+===================================================================
+--- standard_telnetlib-3.13.0.orig/pyproject.toml
++++ standard_telnetlib-3.13.0/pyproject.toml
+@@ -21,5 +21,5 @@ find = {include = ["telnetlib*"]}
+ "Homepage" = "https://github.com/youknowone/python-deadlib"
+ 
+ [build-system]
+-requires = ["setuptools>=75.0"]
++requires = ["setuptools"]
+ build-backend = "setuptools.build_meta"
